@@ -10,28 +10,27 @@ import {
 } from 'class-validator';
 import {CompanyError, CompanyErrorCode} from "Core/Error/Catalog/CompanyError";
 
-export function CompanyNameExists(validationOptions?: ValidationOptions) {
+export function CompanyExists(validationOptions?: ValidationOptions) {
   return (object: any, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,
       options: validationOptions,
-      validator: CompanyNameExistsConstraint,
+      validator: CompanyExistsConstraint,
     });
   };
 }
 
 @ValidatorConstraint({ name: 'AccountExists' })
 @Injectable()
-export class CompanyNameExistsConstraint implements ValidatorConstraintInterface {
+export class CompanyExistsConstraint implements ValidatorConstraintInterface {
   constructor(private companyRepo: CompanyRepository) {}
-  async validate(value: string, args: ValidationArguments) {
-    const slug = SlugIt.make(value);
-    const company = await this.companyRepo.findCompanyBySlug(slug);
-    return company === null;
+  async validate(value: number, args: ValidationArguments) {
+    const company = await this.companyRepo.findById({id: value});
+    return company !== null;
   }
 
   defaultMessage(args: ValidationArguments) {
-    return CompanyError[CompanyErrorCode.COMPANY_EXISTS].message;
+    return CompanyError[CompanyErrorCode.COMPANY_NOT_EXISTS].message;
   }
 }

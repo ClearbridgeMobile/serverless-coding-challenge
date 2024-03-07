@@ -1,3 +1,4 @@
+import database from './database';
 import { ConfigModule } from '@nestjs/config';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -10,7 +11,7 @@ export default class ConfigurationModule {
       envFilePath: `${process.cwd()}/env/.env${
         process.env.NODE_ENV !== 'docker' ? '' : '.' + envFile
       }`,
-      load: [],
+      load: [database],
     });
   }
 }

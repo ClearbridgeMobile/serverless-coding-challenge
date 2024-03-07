@@ -1,6 +1,6 @@
 import Company from 'Core/Database/Models/Company';
 import {Expose} from 'class-transformer';
-import {AutoIncrement, BelongsTo, Column, PrimaryKey, Table,} from 'sequelize-typescript';
+import {AutoIncrement, BelongsTo, Column, ForeignKey, PrimaryKey, Table,} from 'sequelize-typescript';
 
 import BaseModel from './BaseModel';
 
@@ -12,6 +12,9 @@ export default class Founder extends BaseModel {
   @Expose()
   id: number;
 
+  @Column
+  @ForeignKey(() => Company)
+  companyId: number;
 
   @Expose()
   @Column
@@ -19,25 +22,8 @@ export default class Founder extends BaseModel {
 
   @Expose()
   @Column
-  description?: string;
-
-  @Expose()
-  @Column
-  city: string;
-
-  @Expose()
-  @Column
-  state: string;
-
-  @Expose()
-  @Column
-  slug: string;
-
-  @Expose()
-  @Column({ allowNull: true })
-  founded_date: Date;
+  title?: string;
 
   @BelongsTo(() => Company, { as: 'company' })
   company?: Company;
-
 }

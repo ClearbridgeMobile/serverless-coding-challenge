@@ -2,6 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {InjectModel} from '@nestjs/sequelize';
 import {BaseRepository} from 'Core/Database/Repositories/BaseRepository';
 import Company from "Core/Database/Models/Company";
+import Founder from "Core/Database/Models/Founder";
 interface ICreateCompany {
   name: string;
   description: string;
@@ -39,10 +40,22 @@ export class CompanyRepository extends BaseRepository {
   }
 
   async getCompany(id: number): Promise<Company> {
-    return this.companyModel.findByPk(id);
+    return this.companyModel.findByPk(id, {
+        include: [Founder],
+    });
   }
 
   async listCompanies(): Promise<Company[]> {
-    return this.companyModel.findAll();
+    return this.companyModel.findAll({
+      include: [Founder],
+    });
+  }
+
+  async findCompanyBySlug(slug: string): Promise<Company> {
+    return this.companyModel.findOne({
+      where: {
+        slug,
+      },
+    });
   }
 }

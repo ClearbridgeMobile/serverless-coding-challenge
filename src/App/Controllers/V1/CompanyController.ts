@@ -17,7 +17,9 @@ export default class CompanyController extends BaseController {
     summary: 'List companies',
   })
   async listCompanies() {
-    return this.companyService.listCompanies();
+    return this.responseOk({
+      data: await this.companyService.listCompanies()
+    })
   }
 
   @Post('/')
@@ -25,7 +27,9 @@ export default class CompanyController extends BaseController {
     summary: 'create company',
   })
   async createCompany(@Body() body: CompanyCreationDto) {
-    return this.companyService.createCompany(body);
+    return this.responseOk({
+      data: await this.companyService.createCompany(body)
+    })
   }
 
   @Put('/:id')
@@ -33,7 +37,10 @@ export default class CompanyController extends BaseController {
     summary: 'update company',
   })
   async updateCompany(@Body() body: CompanyCreationDto, @Param() param: CompanyIdParamDto) {
-    return this.companyService.updateCompany(body, Number(param.id));
+    await this.companyService.updateCompany(body, Number(param.id));
+    return this.responseOk({
+      message: 'Company updated successfully'
+    })
   }
 
   @Get('/:id')
@@ -41,7 +48,9 @@ export default class CompanyController extends BaseController {
     summary: 'Get company by id',
   })
   async getCompany(@Param() param: CompanyIdParamDto) {
-    return this.companyService.getCompany(Number(param.id));
+    return this.responseOk({
+      data: await this.companyService.getCompany(Number(param.id))
+    })
   }
 
   @Delete('/:id')
@@ -49,6 +58,9 @@ export default class CompanyController extends BaseController {
     summary: 'Delete company by id',
   })
   async deleteCompany(@Param() param: CompanyIdParamDto) {
-    return this.companyService.deleteCompany(Number(param.id));
+    await this.companyService.deleteCompany(Number(param.id));
+    return this.responseOk({
+      message: 'Company deleted successfully'
+    })
   }
 }

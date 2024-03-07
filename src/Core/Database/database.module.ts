@@ -32,6 +32,7 @@ import {CompanyRepository} from "Core/Database/Repositories/CompanyRepository";
           timezone: 'UTC',
           // eslint-disable-next-line no-console
           logging: false,
+          dialect: 'postgres'
         };
       },
     }),
