@@ -1,8 +1,10 @@
 import {Expose} from 'class-transformer';
-import {AutoIncrement, Column, HasMany, PrimaryKey, Table,} from 'sequelize-typescript';
+import {AutoIncrement, BeforeCreate, Column, HasMany, PrimaryKey, Table,} from 'sequelize-typescript';
 
 import BaseModel from './BaseModel';
 import Founder from "Core/Database/Models/Founder";
+
+import slugify from 'slugify';
 
 @Table({ tableName: 'companies' })
 export default class Company extends BaseModel {
@@ -35,9 +37,17 @@ export default class Company extends BaseModel {
 
   @Expose()
   @Column({ allowNull: true })
-  founded_date: Date;
+  foundedDate: Date;
 
   @HasMany(() => Founder, { as: 'founders' })
   founders?: Founder[];
+
+  @BeforeCreate
+  static slugifyCompanyName(company: Company) {
+    company.slug = slugify(company.name, {
+      lower: true,
+    });
+  }
+
 
 }

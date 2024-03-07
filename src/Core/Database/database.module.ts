@@ -39,8 +39,8 @@ import {CompanyRepository} from "Core/Database/Repositories/CompanyRepository";
   ],
   providers: [
     EntityTransactionService,
-      FounderRepository,
-      CompanyRepository,
+    FounderRepository,
+    CompanyRepository,
   ],
   exports: [
     EntityTransactionService,
