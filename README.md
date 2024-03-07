@@ -37,8 +37,6 @@ Build an application that will be a directory of companies, and the people who h
 
 3. Add ability to create a new company
 
-![step 1](Step_1.png)
-
 ### Part 2 : Companies Create
 
 1. Implement and endpoint to create a new company
@@ -48,15 +46,11 @@ Build an application that will be a directory of companies, and the people who h
    - Company Description **required**
    - Founded Date
 
-![step 2](Step_2.png)
-
 ### Part 3 : Company Details
 
 1. Shows all of the Company's information
 2. Ability to update Company
 3. Ability to delete Company
-
-![step 3](Step_3.png)
 
 ### Part 4 : Founders
 
@@ -66,8 +60,6 @@ Build an application that will be a directory of companies, and the people who h
    - Founder Full Name
    - Founder Title
 4. Founders added should display in the company detail page.
-
-![step 4](Step_4.png)
 
 ### Part 5 : Tests
 
