@@ -1,74 +1,73 @@
-# Clearbridge Mobile Engineering: Serverless
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-Welcome to the Clearbridge Mobile Engineering Serverless code Challenge. 
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-This is your chance to show the team how you approach problems and give us insight into your abilities. For the challenge, you are required to develop a serverless rest API. 
-Feel free to use any third party libraries you see fit. You will have **1 day** to submit a solution for the given requirements. If you need more time due to schedule conflicts, just let us know. We value people with good communication skills. 
-We strongly prefer that whatever you do, you do it well, as opposed to trying to razzle dazzle us. Please read all the instructions carefully and email us if you have any questions.
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Getting Started
+## Description
 
-First, fork this repository into your own GitHub account. Then complete each of the parts below, working as you would in a professional environment. Once you have completed all the sections, please update the README, to reflect how to build and run your application, as well as any architectural decisions you have made. Add your deployment url to your github repo so we can test the deployed application. When you believe you are ready to submit your challenge, submit a pull request into our master branch. We will see the notification and get back to you on next steps.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## What we are looking for
+## Installation
 
-- Ability to set up a Serverless REST API.
-- Ability to set up a Relational Database
-- Understanding of the HTTP protocol and how it works with REST API conventions
-- Understanding the basics of CRUD
-  - Create
-  - Read
-  - Update
-  - Delete
-- Ability to develop automated tests for your application
-- Ability to translate user stories into a web application
-- Ability to deploy a back-end stack.
+```bash
+$ npm install
+```
 
-## The Challenge
+## Running the app
 
-### Intro
+```bash
+# development
+$ npm run start
 
-Build an application that will be a directory of companies, and the people who have founded them. The main page should be a list of all the companies with some high-level information (Name, Short Description, City, State). When the user clicks on a company, show its details. Included in those details will be the founding members of company and a long description.
+# watch mode
+$ npm run start:dev
 
-### Part 1 : Companies Index
+# production mode
+$ npm run start:prod
+```
 
-1. Create the database tables necessary to store companies and founders
-2. Create necessary api endpoints to list company info
+## Test
 
-3. Add ability to create a new company
+```bash
+# unit tests
+$ npm run test
 
-### Part 2 : Companies Create
+# e2e tests
+$ npm run test:e2e
 
-1. Implement and endpoint to create a new company
-2. Fields
-   - Company Name **required**
-   - Company Location (City, State) **required**
-   - Company Description **required**
-   - Founded Date
+# test coverage
+$ npm run test:cov
+```
 
-### Part 3 : Company Details
+## Support
 
-1. Shows all of the Company's information
-2. Ability to update Company
-3. Ability to delete Company
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-### Part 4 : Founders
+## Stay in touch
 
-1. In the Company details add the ability to add a Founder to a Company.
-2. Each Founder can only belong to a single company.
-3. Founder Fields
-   - Founder Full Name
-   - Founder Title
-4. Founders added should display in the company detail page.
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-### Part 5 : Tests
+## License
 
-Create a test suite for your application, writing unit and or functional tests that adequately cover the code base.
-
-### Part 6 : Deployment
-
-Sign-up for an AWS (or other provider) and deploy your application. Please provide us with the deployed URL. Please seed your application with at least a dozen Companies and Founders.
-
-### Next Steps
-
-If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base. Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
+Nest is [MIT licensed](LICENSE).
