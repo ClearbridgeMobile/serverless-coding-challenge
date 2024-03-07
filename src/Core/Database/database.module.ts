@@ -4,6 +4,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import models from 'Core/Database/Models';
 import ModelsModule from 'Core/Database/Models/models.module';
 import { EntityTransactionService } from 'Core/Database/entity-transaction.service';
+import {FounderRepository} from "Core/Database/Repositories/FounderRepository";
+import {CompanyRepository} from "Core/Database/Repositories/CompanyRepository";
 
 @Global()
 @Module({
@@ -37,9 +39,13 @@ import { EntityTransactionService } from 'Core/Database/entity-transaction.servi
   ],
   providers: [
     EntityTransactionService,
+      FounderRepository,
+      CompanyRepository,
   ],
   exports: [
     EntityTransactionService,
+    FounderRepository,
+    CompanyRepository,
   ],
 })
 export class DatabaseModule {}

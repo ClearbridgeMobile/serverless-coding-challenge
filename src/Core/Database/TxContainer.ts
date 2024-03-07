@@ -1,9 +1,9 @@
 /**
  * Transaction container
  */
-import { Transaction } from 'sequelize/types/transaction';
-import { EntityTransactionProvider } from 'Core/Database/entity-transaction.service';
 import { InternalServerErrorException } from '@nestjs/common';
+import { EntityTransactionProvider } from 'Core/Database/entity-transaction.service';
+import { Transaction } from 'sequelize/types/transaction';
 
 /**
  * A transaction "container" to be used for executing use cases across one or more service boundaries.
@@ -14,7 +14,9 @@ export class TxContainer {
   private level = -1;
   private transactions = [];
 
-  constructor(private readonly transactionProvider: EntityTransactionProvider) {}
+  constructor(
+    private readonly transactionProvider: EntityTransactionProvider,
+  ) {}
 
   static make(transactionProvider: EntityTransactionProvider): TxContainer {
     return new TxContainer(transactionProvider);
@@ -23,7 +25,9 @@ export class TxContainer {
   async transaction(): Promise<Transaction> {
     const baseTransaction = this.getBaseTransaction();
     // Sequelize can keep track of "SAVEPOINTS" if we pass the FIRST transaction instance (i.e. the transaction object that has no parent).
-    const newTransaction = await this.transactionProvider.createTransaction(baseTransaction);
+    const newTransaction = await this.transactionProvider.createTransaction(
+      baseTransaction,
+    );
     this.level++;
     this.transactions.push(newTransaction);
 
@@ -34,7 +38,8 @@ export class TxContainer {
     const currentTransaction = this.getTransactionAtCurrentLevel();
     if (!currentTransaction) {
       throw new InternalServerErrorException({
-        message: 'Bad TxContainer container state. Attempting to commit an undefined transaction',
+        message:
+          'Bad TxContainer container state. Attempting to commit an undefined transaction',
       });
     }
 
@@ -51,7 +56,8 @@ export class TxContainer {
     const currentTransaction = this.getTransactionAtCurrentLevel();
     if (!currentTransaction) {
       throw new InternalServerErrorException({
-        message: 'Bad TxContainer container state. Attempting to rollback an undefined transaction',
+        message:
+          'Bad TxContainer container state. Attempting to rollback an undefined transaction',
       });
     }
 
@@ -76,7 +82,9 @@ export class TxContainer {
    * your executionFn function. Let the method handle it for you.
    * @param executionFn
    */
-  async executeInTransaction<T>(executionFn: (tx: Transaction) => Promise<any>): Promise<T> {
+  async executeInTransaction<T>(
+    executionFn: (tx: Transaction) => Promise<any>,
+  ): Promise<T> {
     await this.transaction();
 
     try {
