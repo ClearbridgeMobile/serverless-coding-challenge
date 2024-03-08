@@ -66,3 +66,8 @@ http://localhost:4000/api-docs#/
 
 http://localhost:4000/api/v1/
 
+
+## API Deployment BASE URL
+
+https://5qfof1ci6d.execute-api.us-east-1.amazonaws.com/prod/api/v1/
+
