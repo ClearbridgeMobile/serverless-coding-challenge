@@ -1,0 +1,30 @@
+{
+  "globals": {
+    "ts-jest": {
+      "useESM": false,
+      "tsconfig": "tsconfig.json"
+    }
+  },
+  "testRegex": "./test/e2e/.*.e2e-spec.ts$",
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "verbose": true,
+  "moduleDirectories": ["node_modules", "src", "test"],
+  "rootDir": ".",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "Test/(.*)": "<rootDir>/test/$1",
+    "firebase-admin/auth": "<rootDir>/node_modules/firebase-admin/lib/auth",
+    "firebase-admin/app": "<rootDir>/node_modules/firebase-admin/lib/app"
+  },
+  "collectCoverageFrom": [
+    "src/*.(t|j)s"
+  ],
+  "coverageDirectory": "../coverage",
+  "testEnvironment": "node"
+}

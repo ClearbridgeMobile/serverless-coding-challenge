@@ -5,9 +5,9 @@ import { AppModule } from '@src/app.module';
 import serverlessExpress from '@vendia/serverless-express';
 import { NestJsExceptionHandler } from 'Core/Error/NestJsExceptionHandler';
 import { ValidationOptions } from 'Core/Validation/Http/ValidationPipeOptions';
-import bodyParser from 'body-parser';
+import * as bodyParser from 'body-parser';
 import { useContainer } from 'class-validator';
-import cookieParser from 'cookie-parser';
+import * as cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 
 export class Application {
@@ -17,8 +17,6 @@ export class Application {
   protected app: NestApplication;
   constructor() {
     this.port = process.env.PORT || 5000;
-    this.nodeEnv = process.env.NODE_ENV;
-    this.sentryDns = process.env.SENTRY_DNS;
   }
   public async init() {
     await this.createApp();
