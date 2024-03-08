@@ -1,0 +1,31 @@
+service: serverless-test-app
+
+useDotenv: true
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+package:
+  exclude:
+    - venv/**
+    - .git/**
+
+functions:
+  main:
+    package:
+      include:
+        - dist/**
+    handler: dist/serverless.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY

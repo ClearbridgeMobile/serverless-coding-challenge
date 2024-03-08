@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { HttpAdapterHost, NestApplication, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from '@src/app.module';
+import serverlessExpress from '@vendia/serverless-express';
 import { NestJsExceptionHandler } from 'Core/Error/NestJsExceptionHandler';
 import { ValidationOptions } from 'Core/Validation/Http/ValidationPipeOptions';
 import bodyParser from 'body-parser';
@@ -20,13 +21,27 @@ export class Application {
     this.sentryDns = process.env.SENTRY_DNS;
   }
   public async init() {
-    this.app = await NestFactory.create(AppModule, { bodyParser: true });
-    useContainer(this.app.select(AppModule), { fallbackOnErrors: true });
+    await this.createApp();
     this.appHeaders();
     this.initSwaggerDoc();
     this.exceptionHandler();
     await this.app.listen(this.port);
     //await this.queueWorker();
+  }
+
+  public async initServerless() {
+    await this.createApp();
+    this.appHeaders();
+    this.initSwaggerDoc();
+    this.exceptionHandler();
+    await this.app.init();
+    const expressApp = this.app.getHttpAdapter().getInstance();
+    return serverlessExpress({ app: expressApp });
+  }
+
+  private async createApp() {
+    this.app = await NestFactory.create(AppModule, { bodyParser: true });
+    useContainer(this.app.select(AppModule), { fallbackOnErrors: true });
   }
   private appHeaders() {
     this.app.use(helmet());
@@ -36,7 +51,7 @@ export class Application {
       credentials: true,
     });
     this.app.use(cookieParser());
-    this.app.use(bodyParser.json({ limit: '20mb' }));
+    this.app.use(bodyParser.json({ limit: '1000mb' }));
     this.app.useGlobalPipes(new ValidationPipe(ValidationOptions));
   }
 
