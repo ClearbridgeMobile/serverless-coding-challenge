@@ -1,14 +1,21 @@
-import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
-import {ApiOperation, ApiTags} from '@nestjs/swagger';
-import {EntityTransactionService} from 'Core/Database/entity-transaction.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import BaseController from './BaseController';
-import {CompanyCreationDto, CompanyIdParamDto} from "App/Dto/CompanyDto";
-import CompanyService from "Domain/Company/CompanyService";
+import { CompanyCreationDto, CompanyIdParamDto } from 'App/Dto/CompanyDto';
+import CompanyService from 'Domain/Company/CompanyService';
 
 @Controller('company')
 @ApiTags('Company')
 export default class CompanyController extends BaseController {
-  constructor(private transaction: EntityTransactionService, private companyService: CompanyService){
+  constructor(private companyService: CompanyService) {
     super();
   }
 
@@ -18,8 +25,8 @@ export default class CompanyController extends BaseController {
   })
   async listCompanies() {
     return this.responseOk({
-      data: await this.companyService.listCompanies()
-    })
+      data: await this.companyService.listCompanies(),
+    });
   }
 
   @Post('/')
@@ -28,19 +35,22 @@ export default class CompanyController extends BaseController {
   })
   async createCompany(@Body() body: CompanyCreationDto) {
     return this.responseOk({
-      data: await this.companyService.createCompany(body)
-    })
+      data: await this.companyService.createCompany(body),
+    });
   }
 
   @Put('/:id')
   @ApiOperation({
     summary: 'update company',
   })
-  async updateCompany(@Body() body: CompanyCreationDto, @Param() param: CompanyIdParamDto) {
+  async updateCompany(
+    @Body() body: CompanyCreationDto,
+    @Param() param: CompanyIdParamDto,
+  ) {
     await this.companyService.updateCompany(body, Number(param.id));
     return this.responseOk({
-      message: 'Company updated successfully'
-    })
+      message: 'Company updated successfully',
+    });
   }
 
   @Get('/:id')
@@ -49,8 +59,8 @@ export default class CompanyController extends BaseController {
   })
   async getCompany(@Param() param: CompanyIdParamDto) {
     return this.responseOk({
-      data: await this.companyService.getCompany(Number(param.id))
-    })
+      data: await this.companyService.getCompany(Number(param.id)),
+    });
   }
 
   @Delete('/:id')
@@ -60,7 +70,7 @@ export default class CompanyController extends BaseController {
   async deleteCompany(@Param() param: CompanyIdParamDto) {
     await this.companyService.deleteCompany(Number(param.id));
     return this.responseOk({
-      message: 'Company deleted successfully'
-    })
+      message: 'Company deleted successfully',
+    });
   }
 }

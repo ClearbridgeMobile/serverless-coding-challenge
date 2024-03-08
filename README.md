@@ -35,6 +35,12 @@ $ npm install
 ## Running the app
 
 ```bash
+# run migration
+$ npm run db:migrate
+
+# run seed
+$ npm run db:seed
+
 # development
 $ npm run start
 
@@ -50,24 +56,18 @@ $ npm run start:prod
 ```bash
 # unit tests
 $ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+## API Documentation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+http://localhost:4000/api-docs#/
 
-## Stay in touch
+## API BaseURL
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+http://localhost:4000/api/v1/
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+## API Deployment BASE URL
+
+https://5qfof1ci6d.execute-api.us-east-1.amazonaws.com/prod/api/v1/
+

@@ -3,9 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import models from 'Core/Database/Models';
 import ModelsModule from 'Core/Database/Models/models.module';
-import { EntityTransactionService } from 'Core/Database/entity-transaction.service';
-import {FounderRepository} from "Core/Database/Repositories/FounderRepository";
-import {CompanyRepository} from "Core/Database/Repositories/CompanyRepository";
+import { FounderRepository } from 'Core/Database/Repositories/FounderRepository';
+import { CompanyRepository } from 'Core/Database/Repositories/CompanyRepository';
 
 @Global()
 @Module({
@@ -32,21 +31,13 @@ import {CompanyRepository} from "Core/Database/Repositories/CompanyRepository";
           timezone: 'UTC',
           // eslint-disable-next-line no-console
           logging: false,
-          dialect: 'postgres'
+          dialect: 'postgres',
         };
       },
     }),
     ModelsModule,
   ],
-  providers: [
-    EntityTransactionService,
-    FounderRepository,
-    CompanyRepository,
-  ],
-  exports: [
-    EntityTransactionService,
-    FounderRepository,
-    CompanyRepository,
-  ],
+  providers: [FounderRepository, CompanyRepository],
+  exports: [FounderRepository, CompanyRepository],
 })
 export class DatabaseModule {}

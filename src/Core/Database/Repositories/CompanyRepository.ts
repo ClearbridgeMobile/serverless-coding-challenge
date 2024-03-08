@@ -1,8 +1,8 @@
-import {Injectable} from '@nestjs/common';
-import {InjectModel} from '@nestjs/sequelize';
-import {BaseRepository} from 'Core/Database/Repositories/BaseRepository';
-import Company from "Core/Database/Models/Company";
-import Founder from "Core/Database/Models/Founder";
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { BaseRepository } from 'Core/Database/Repositories/BaseRepository';
+import Company from 'Core/Database/Models/Company';
+import Founder from 'Core/Database/Models/Founder';
 interface ICreateCompany {
   name: string;
   description: string;
@@ -23,7 +23,10 @@ export class CompanyRepository extends BaseRepository {
     return this.companyModel.create(data as any);
   }
 
-  async updateCompany(id: number, data: ICreateCompany): Promise<[affectedCount: number]> {
+  async updateCompany(
+    id: number,
+    data: ICreateCompany,
+  ): Promise<[affectedCount: number]> {
     return this.companyModel.update(data as any, {
       where: {
         id,
@@ -39,9 +42,9 @@ export class CompanyRepository extends BaseRepository {
     });
   }
 
-  async getCompany(id: number): Promise<Company> {
+  async getCompany(id: number): Promise<Company | null> {
     return this.companyModel.findByPk(id, {
-        include: [Founder],
+      include: [Founder],
     });
   }
 
@@ -51,7 +54,7 @@ export class CompanyRepository extends BaseRepository {
     });
   }
 
-  async findCompanyBySlug(slug: string): Promise<Company> {
+  async findCompanyBySlug(slug: string): Promise<Company | null> {
     return this.companyModel.findOne({
       where: {
         slug,
