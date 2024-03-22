@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "38b0aa5f-6529-475a-9167-0b27e4c89bca",
+		"name": "clear-bridge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33805943"
+	},
+	"item": [
+		{
+			"name": "create company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"company 8\",\r\n        \"city\": \"city\",\r\n        \"state\": \"state\",\r\n        \"description\": \"desc\",\r\n        \"founded_date\": \"2023-04-01\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/company",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/company",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/company/7",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"company",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"company 2 pvt ltd\",\r\n        \"city\": \"city\",\r\n        \"state\": \"state\",\r\n        \"description\": \"desc\",\r\n        \"founded_date\": \"2023-04-01\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/company/7",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"company",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Founder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\":\"Jhon\",\r\n    \"title\":\"CTO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/founder/7",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"founder",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/company/7",
+					"protocol": "https",
+					"host": [
+						"a0os7y1l4g",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"company",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -72,3 +72,37 @@ Sign-up for an AWS (or other provider) and deploy your application. Please provi
 ### Next Steps
 
 If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base. Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
+
+
+# Process to run the application:
+
+Setp:1
+npm install
+
+Step 2:
+create and update .env file with below fields
+DBNAME=clearbridge
+MASTERUSERNAME=postgres
+MASTERPASSWORD= practice-nishanth
+HOST=practice-nishanth-2.ctgc2ugo21hz.us-east-1.rds.amazonaws.com
+
+
+Step 3: 
+node app.js (it has all the functions, uncomment the function you want to test from local)
+
+please check the attached postman collection(clear-bridge.postman_collection.json) file, it has all the methods with sample data, you can import the postman collection and perform all CRUD operation possible over company and founders APIs.
+
+
+//
+# Run test cases
+npm run test
+
+# Arc
+
+I'm using below services
+AWS API Gateway to create Rest APIs
+AWS lambda functions for CRUD operations
+RDS Postgress for Relational database
+
+Deployed API Gateway with BASE URL: https://a0os7y1l4g.execute-api.us-east-1.amazonaws.com/dev/
+For individula URL please check the postman collection attached.
