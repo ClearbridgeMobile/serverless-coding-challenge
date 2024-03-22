@@ -152,7 +152,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Delete Company",
 			"request": {
 				"method": "DELETE",
 				"header": [],
